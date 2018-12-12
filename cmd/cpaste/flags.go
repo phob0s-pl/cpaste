@@ -11,4 +11,5 @@ var (
 	flagPass      string
 	flagListLimit int
 	flagPasteKey  string
+	flagFilePath  string
 )

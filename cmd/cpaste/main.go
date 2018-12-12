@@ -9,7 +9,7 @@ import (
 
 const (
 	configPath = ".config/cpaste.json"
-	version    = "0.1.0"
+	version    = "0.2.0"
 )
 
 func main() {
@@ -72,16 +72,19 @@ func main() {
 		Long:  "upload file to pastebin.com",
 		Run:   file,
 	}
-	fileCmd.Flags().StringVarP(&flagFormat, "format", "f", "auto",
-		"format of the paste, \"auto\" to check by file extension")
+	fileCmd.Flags().StringVarP(&flagFormat, "format", "f", "",
+		"format of the paste, \"\" to check by file extension")
 	fileCmd.Flags().BoolVarP(&flagPrivate, "private", "", false,
 		"make paste private")
 	fileCmd.Flags().BoolVarP(&flagPublic, "public", "", false,
 		"make paste public")
 	fileCmd.Flags().StringVarP(&flagName, "name", "n", "",
-		"title of the paste, \"auto\" to use file name")
-	fileCmd.Flags().StringVarP(&flagExpiry, "expiration", "e",
-		"1M", "expiration date")
+		"title of the paste, \"\" to use file name")
+	fileCmd.Flags().StringVarP(&flagExpiry, "expiration", "e", "1M",
+		"expiration date")
+	fileCmd.Flags().StringVarP(&flagFilePath, "path", "p", "",
+		"path of the file to upload")
+	fileCmd.MarkFlagRequired("path") // nolint: gosec
 
 	publishCmd.Flags().StringVarP(&flagFormat, "format", "f", "text",
 		"format of the paste")
