@@ -1,6 +1,8 @@
 package pastebin
 
-import "path/filepath"
+import (
+	"path/filepath"
+)
 
 // GetFileFormat returns format of the paste for give file
 func GetFileFormat(path string) string { // nolint: gocyclo

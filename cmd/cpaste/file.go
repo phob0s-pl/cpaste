@@ -36,16 +36,14 @@ func file(cmd *cobra.Command, args []string) {
 		flagName = fileName
 	}
 
-	if flagFormat == "" {
-		flagFormat = pastebin.GetFileFormat(fileName)
+	if flagFileFormat == "" {
+		flagFileFormat = pastebin.GetFileFormat(fileName)
 	}
-
-	fmt.Println(flagFormat, flagName)
 
 	paste := &pastebin.Paste{
 		Title:       flagName,
 		Expire:      flagExpiry,
-		FormatShort: flagFormat,
+		FormatShort: flagFileFormat,
 	}
 
 	if flagPublic {

@@ -9,7 +9,7 @@ import (
 
 const (
 	configPath = ".config/cpaste.json"
-	version    = "0.2.0"
+	version    = "0.3.0"
 )
 
 func main() {
@@ -72,14 +72,14 @@ func main() {
 		Long:  "upload file to pastebin.com",
 		Run:   file,
 	}
-	fileCmd.Flags().StringVarP(&flagFormat, "format", "f", "",
-		"format of the paste, \"\" to check by file extension")
+	fileCmd.Flags().StringVarP(&flagFileFormat, "format", "f", "",
+		"format of the paste, empty to auto check by file extension")
 	fileCmd.Flags().BoolVarP(&flagPrivate, "private", "", false,
 		"make paste private")
 	fileCmd.Flags().BoolVarP(&flagPublic, "public", "", false,
 		"make paste public")
 	fileCmd.Flags().StringVarP(&flagName, "name", "n", "",
-		"title of the paste, \"\" to use file name")
+		"title of the paste, empty to use file name")
 	fileCmd.Flags().StringVarP(&flagExpiry, "expiration", "e", "1M",
 		"expiration date")
 	fileCmd.Flags().StringVarP(&flagFilePath, "path", "p", "",
